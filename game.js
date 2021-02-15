@@ -25,6 +25,7 @@ var platforms,
   bombs,
   score = 0,
   numStars = 5,
+  level = 1,
   gameOver = false,
   scoreText,
   levelText,
@@ -134,15 +135,17 @@ function collectStar(player, star) {
   scoreText.setText(
     "Score: " +
       score +
-      " & " +
-      (numStars + 1) +
-      "*10=" +
-      (numStars + 1) * 10 +
+      " & Level - " +
+      level +
+      //   (numStars + 1) +
+      //   "*10=" +
+      //   (numStars + 1) * 10 +
       (gameOver ? "Game-Over" : "")
   );
 
   if (stars.countActive(true) === 0) {
     numStars += 10;
+    level += 1;
     stars = this.physics.add.group({
       key: "star",
       repeat: numStars,
